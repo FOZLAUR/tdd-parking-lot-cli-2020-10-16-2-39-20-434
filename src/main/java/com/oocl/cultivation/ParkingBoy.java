@@ -24,8 +24,4 @@ public class ParkingBoy {
     public Car fetchCar(ParkingTicket parkingTicket) {
         return parkingLot.fetchCar(parkingTicket);
     }
-
-    public void printParkingLots(){
-        parkingLotList.stream().forEach(parkingLot -> System.out.println(parkingLot.getMapSize()));
-    }
 }

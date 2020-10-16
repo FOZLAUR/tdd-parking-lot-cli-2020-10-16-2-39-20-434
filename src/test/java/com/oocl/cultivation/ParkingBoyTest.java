@@ -27,21 +27,23 @@ public class ParkingBoyTest {
         assertNotNull(parkingTicket);
     }
 
-//    @Test
-//    public void should_return_right_car_when_fetch_car_given_ticket() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot();
-//        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
-//        Car car = new Car();
-//
-//        //when
-//        ParkingTicket parkingTicket = parkingBoy.park(car);
-//        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
-//
-//        //then
-//        assertSame(car, fetchedCar);
-//    }
-//
+    @Test
+    public void should_return_right_car_when_fetch_car_given_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car = new Car();
+
+        //when
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
+
+        //then
+        assertSame(car, fetchedCar);
+    }
+
 //    @Test
 //    public void should_return_two_cars_when_fetch_car_given_two_ticket() {
 //        //given
