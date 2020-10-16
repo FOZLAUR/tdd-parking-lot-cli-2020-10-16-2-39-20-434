@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.TicketNotProvidedException;
 import com.oocl.exceptions.UnrecognizedTicketException;
 
 import java.util.HashMap;
@@ -29,6 +30,8 @@ public class ParkingLot {
         Car fetchedCar = parkingTicketCarMap.remove(parkingTicket);
         if(parkingTicket!=null && fetchedCar==null) {
             throw new UnrecognizedTicketException();
+        } else if(parkingTicket==null){
+            throw new TicketNotProvidedException();
         }
         return fetchedCar;
     }
