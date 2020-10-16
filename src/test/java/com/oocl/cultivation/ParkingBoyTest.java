@@ -66,7 +66,7 @@ public class ParkingBoyTest {
         Car car = new Car();
 
         ParkingTicket parkingTicket = parkingBoy.park(car);
-        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
+        parkingBoy.fetchCar(parkingTicket);
         Car fetchedCarAgain = parkingBoy.fetchCar(parkingTicket);
 
         assertNull(fetchedCarAgain);
