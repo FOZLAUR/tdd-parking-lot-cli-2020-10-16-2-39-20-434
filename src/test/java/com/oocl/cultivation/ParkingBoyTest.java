@@ -62,7 +62,6 @@ public class ParkingBoyTest {
     @Test
     public void should_return_no_car_when_fetch_car_given_used_ticket() {
         ParkingBoy parkingBoy = new ParkingBoy();
-
         Car car = new Car();
 
         ParkingTicket parkingTicket = parkingBoy.park(car);
@@ -70,5 +69,17 @@ public class ParkingBoyTest {
         Car fetchedCarAgain = parkingBoy.fetchCar(parkingTicket);
 
         assertNull(fetchedCarAgain);
+    }
+
+    @Test
+    public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
+        ParkingBoy parkingBoy = new ParkingBoy();
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+
+        assertNull(parkingTicket2);
     }
 }
