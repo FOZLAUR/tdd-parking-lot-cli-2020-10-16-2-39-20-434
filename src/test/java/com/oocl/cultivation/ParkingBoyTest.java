@@ -100,22 +100,24 @@ public class ParkingBoyTest {
         });
     }
 
-//    @Test
-//    public void should_return_no_car_when_fetch_car_given_used_ticket() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot();
-//        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
-//        Car car = new Car();
-//        ParkingTicket parkingTicket = parkingBoy.park(car);
-//        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
-//        assertSame(car, fetchedCar);
-//
-//        //when-then
-//        assertThrows(UnrecognizedTicketException.class, () -> {
-//            parkingBoy.fetchCar(parkingTicket);
-//        });
-//    }
-//
+    @Test
+    public void should_return_no_car_when_fetch_car_given_used_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkinglot = new ParkingLot();
+        parkingLotList.add(parkinglot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingBoy.park(car);
+        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
+        assertSame(car, fetchedCar);
+
+        //when-then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(parkingTicket);
+        });
+    }
+
 //    @Test
 //    public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
 //        //given
