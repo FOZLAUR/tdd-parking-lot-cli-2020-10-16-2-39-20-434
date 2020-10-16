@@ -7,7 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingBoyTest {
     @Test
     public void should_return_ticket_when_park_car_given_car() {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkinglot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car = new Car();
 
         ParkingTicket parkingTicket = parkingBoy.park(car);
@@ -17,7 +18,8 @@ public class ParkingBoyTest {
 
     @Test
     public void should_return_right_car_when_fetch_car_given_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkinglot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car = new Car();
 
         ParkingTicket parkingTicket = parkingBoy.park(car);
@@ -28,7 +30,8 @@ public class ParkingBoyTest {
 
     @Test
     public void should_return_two_cars_when_fetch_car_given_two_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkinglot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car1 = new Car();
         Car car2 = new Car();
 
@@ -43,7 +46,8 @@ public class ParkingBoyTest {
 
     @Test
     public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkinglot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car = new Car();
         ParkingTicket correctTicket = parkingBoy.park(car);
 
@@ -57,16 +61,18 @@ public class ParkingBoyTest {
 
     @Test
     public void should_return_no_car_when_fetch_car_given_no_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkinglot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
 
-        Car fetchedCar = parkingBoy.fetchCar();
+        Car fetchedCar = parkingBoy.fetchCar(null);
 
         assertNull(fetchedCar);
     }
 
     @Test
     public void should_return_no_car_when_fetch_car_given_used_ticket() {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingLot parkinglot = new ParkingLot();
+        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
         parkingBoy.fetchCar(parkingTicket);
