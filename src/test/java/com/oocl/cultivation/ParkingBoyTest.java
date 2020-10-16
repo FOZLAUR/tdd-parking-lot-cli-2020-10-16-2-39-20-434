@@ -93,13 +93,13 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
-        parkingBoy.fetchCar(parkingTicket);
+        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
+        assertSame(car, fetchedCar);
 
-        //when
-        Car fetchedCarAgain = parkingBoy.fetchCar(parkingTicket);
-
-        //then
-        assertNull(fetchedCarAgain);
+        //when-then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(parkingTicket);
+        });
     }
 
     @Test
