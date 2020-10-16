@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.TicketNotProvidedException;
 import com.oocl.exceptions.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
 
@@ -79,11 +80,10 @@ public class ParkingBoyTest {
         ParkingLot parkinglot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
 
-        //when
-        Car fetchedCar = parkingBoy.fetchCar(null);
-
-        //then
-        assertNull(fetchedCar);
+        //when-then
+        assertThrows(TicketNotProvidedException.class, () -> {
+            parkingBoy.fetchCar(null);
+        });
     }
 
     @Test
