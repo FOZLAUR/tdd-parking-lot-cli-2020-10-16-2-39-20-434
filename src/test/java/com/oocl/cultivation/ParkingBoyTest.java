@@ -44,10 +44,17 @@ public class ParkingBoyTest {
     @Test
     public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
         ParkingBoy parkingBoy = new ParkingBoy();
-        Car car = new Car();
 
-        ParkingTicket parkingTicket = parkingBoy.park(car);
         Car fetchedCar = parkingBoy.fetchCar(new ParkingTicket());
+
+        assertNull(fetchedCar);
+    }
+
+    @Test
+    public void should_return_no_car_when_fetch_car_given_no_ticket() {
+        ParkingBoy parkingBoy = new ParkingBoy();
+
+        Car fetchedCar = parkingBoy.fetchCar(null);
 
         assertNull(fetchedCar);
     }
