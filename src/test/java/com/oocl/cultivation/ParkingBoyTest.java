@@ -86,18 +86,20 @@ public class ParkingBoyTest {
         });
     }
 
-//    @Test
-//    public void should_return_no_car_when_fetch_car_given_no_ticket() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot();
-//        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
-//
-//        //when-then
-//        assertThrows(TicketNotProvidedException.class, () -> {
-//            parkingBoy.fetchCar(null);
-//        });
-//    }
-//
+    @Test
+    public void should_return_no_car_when_fetch_car_given_no_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkinglot = new ParkingLot();
+        parkingLotList.add(parkinglot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //when-then
+        assertThrows(TicketNotProvidedException.class, () -> {
+            parkingBoy.fetchCar(null);
+        });
+    }
+
 //    @Test
 //    public void should_return_no_car_when_fetch_car_given_used_ticket() {
 //        //given
