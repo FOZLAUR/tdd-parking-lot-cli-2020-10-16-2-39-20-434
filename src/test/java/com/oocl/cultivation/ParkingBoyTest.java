@@ -65,25 +65,27 @@ public class ParkingBoyTest {
         assertSame(car2, fetchedCar2);
     }
 
-//    @Test
-//    public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot();
-//        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
-//        Car car = new Car();
-//        ParkingTicket correctTicket = parkingBoy.park(car);
-//
-//        //when
-//        ParkingTicket wrongTicket = new ParkingTicket();
-//        Car fetchedCorrectCar = parkingBoy.fetchCar(correctTicket);
-//        assertSame(car, fetchedCorrectCar);
-//
-//        //then
-//        assertThrows(UnrecognizedTicketException.class, () -> {
-//            parkingBoy.fetchCar(wrongTicket);
-//        });
-//    }
-//
+    @Test
+    public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkinglot = new ParkingLot();
+        parkingLotList.add(parkinglot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car = new Car();
+        ParkingTicket correctTicket = parkingBoy.park(car);
+
+        //when
+        ParkingTicket wrongTicket = new ParkingTicket();
+        Car fetchedCorrectCar = parkingBoy.fetchCar(correctTicket);
+        assertSame(car, fetchedCorrectCar);
+
+        //then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(wrongTicket);
+        });
+    }
+
 //    @Test
 //    public void should_return_no_car_when_fetch_car_given_no_ticket() {
 //        //given
