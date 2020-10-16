@@ -44,25 +44,27 @@ public class ParkingBoyTest {
         assertSame(car, fetchedCar);
     }
 
-//    @Test
-//    public void should_return_two_cars_when_fetch_car_given_two_ticket() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot();
-//        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
-//        Car car1 = new Car();
-//        Car car2 = new Car();
-//
-//        //when
-//        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
-//        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
-//        Car fetchedCar1 = parkingBoy.fetchCar(parkingTicket1);
-//        Car fetchedCar2 = parkingBoy.fetchCar(parkingTicket2);
-//
-//        //then
-//        assertSame(car1, fetchedCar1);
-//        assertSame(car2, fetchedCar2);
-//    }
-//
+    @Test
+    public void should_return_two_cars_when_fetch_car_given_two_ticket() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkinglot = new ParkingLot();
+        parkingLotList.add(parkinglot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        //when
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        Car fetchedCar1 = parkingBoy.fetchCar(parkingTicket1);
+        Car fetchedCar2 = parkingBoy.fetchCar(parkingTicket2);
+
+        //then
+        assertSame(car1, fetchedCar1);
+        assertSame(car2, fetchedCar2);
+    }
+
 //    @Test
 //    public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
 //        //given
