@@ -45,4 +45,8 @@ public class ParkingLot {
     public boolean isFull(){
         return parkingTicketCarMap.size() >= capacity;
     }
+
+    public boolean containsTicket(ParkingTicket parkingTicket){
+        return parkingTicketCarMap.containsKey(parkingTicket);
+    }
 }
