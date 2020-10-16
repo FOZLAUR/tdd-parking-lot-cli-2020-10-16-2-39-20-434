@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.ParkingLotOutOfPositionsException;
 import com.oocl.exceptions.TicketNotProvidedException;
 import com.oocl.exceptions.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
@@ -109,12 +110,11 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
         Car car1 = new Car();
         Car car2 = new Car();
-
-        //when
         parkingBoy.park(car1);
-        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
 
-        //then
-        assertNull(parkingTicket2);
+        //when-then
+        assertThrows(ParkingLotOutOfPositionsException.class, () -> {
+            parkingBoy.park(car2);
+        });
     }
 }
