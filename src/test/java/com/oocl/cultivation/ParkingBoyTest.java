@@ -118,18 +118,20 @@ public class ParkingBoyTest {
         });
     }
 
-//    @Test
-//    public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
-//        //given
-//        ParkingLot parkinglot = new ParkingLot(1);
-//        ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
-//        Car car1 = new Car();
-//        Car car2 = new Car();
-//        parkingBoy.park(car1);
-//
-//        //when-then
-//        assertThrows(ParkingLotOutOfPositionsException.class, () -> {
-//            parkingBoy.park(car2);
-//        });
-//    }
+    @Test
+    public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkinglot = new ParkingLot(1);
+        parkingLotList.add(parkinglot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        parkingBoy.park(car1);
+
+        //when-then
+        assertThrows(ParkingLotOutOfPositionsException.class, () -> {
+            parkingBoy.park(car2);
+        });
+    }
 }
