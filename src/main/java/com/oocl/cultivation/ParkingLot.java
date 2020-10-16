@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.ParkingLotOutOfPositionsException;
 import com.oocl.exceptions.TicketNotProvidedException;
 import com.oocl.exceptions.UnrecognizedTicketException;
 
@@ -21,8 +22,13 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingTicket parkingTicket = new ParkingTicket();
-        parkingTicketCarMap.put(parkingTicket, car);
+        ParkingTicket parkingTicket;
+        if(isFull()){
+            throw new ParkingLotOutOfPositionsException();
+        } else {
+            parkingTicket = new ParkingTicket();
+            parkingTicketCarMap.put(parkingTicket, car);
+        }
         return parkingTicket;
     }
 
