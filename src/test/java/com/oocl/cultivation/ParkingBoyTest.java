@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.UnrecognizedTicketException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,7 +45,7 @@ public class ParkingBoyTest {
         assertSame(car2, fetchedCar2);
     }
 
-    @Test
+    @Test//
     public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
         ParkingLot parkinglot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
@@ -52,11 +53,12 @@ public class ParkingBoyTest {
         ParkingTicket correctTicket = parkingBoy.park(car);
 
         ParkingTicket wrongTicket = new ParkingTicket();
-        Car fetchedWrongCar = parkingBoy.fetchCar(wrongTicket);
         Car fetchedCorrectCar = parkingBoy.fetchCar(correctTicket);
-
-        assertNull(fetchedWrongCar);
         assertSame(car, fetchedCorrectCar);
+
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(wrongTicket);
+        });
     }
 
     @Test
@@ -69,7 +71,7 @@ public class ParkingBoyTest {
         assertNull(fetchedCar);
     }
 
-    @Test
+    @Test//
     public void should_return_no_car_when_fetch_car_given_used_ticket() {
         ParkingLot parkinglot = new ParkingLot();
         ParkingBoy parkingBoy = new ParkingBoy(parkinglot);
