@@ -48,8 +48,8 @@ public class ParkingBoyTest {
     public void should_return_two_cars_when_fetch_car_given_two_ticket() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkinglot = new ParkingLot();
-        parkingLotList.add(parkinglot);
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         Car car1 = new Car();
         Car car2 = new Car();
@@ -69,8 +69,8 @@ public class ParkingBoyTest {
     public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkinglot = new ParkingLot();
-        parkingLotList.add(parkinglot);
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         Car car = new Car();
         ParkingTicket correctTicket = parkingBoy.park(car);
@@ -90,8 +90,8 @@ public class ParkingBoyTest {
     public void should_return_no_car_when_fetch_car_given_no_ticket() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkinglot = new ParkingLot();
-        parkingLotList.add(parkinglot);
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
 
         //when-then
@@ -104,8 +104,8 @@ public class ParkingBoyTest {
     public void should_return_no_car_when_fetch_car_given_used_ticket() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkinglot = new ParkingLot();
-        parkingLotList.add(parkinglot);
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         Car car = new Car();
         ParkingTicket parkingTicket = parkingBoy.park(car);
@@ -122,8 +122,8 @@ public class ParkingBoyTest {
     public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkinglot = new ParkingLot(1);
-        parkingLotList.add(parkinglot);
+        ParkingLot parkingLot = new ParkingLot(1);
+        parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         Car car1 = new Car();
         Car car2 = new Car();
@@ -133,5 +133,26 @@ public class ParkingBoyTest {
         assertThrows(ParkingLotOutOfPositionsException.class, () -> {
             parkingBoy.park(car2);
         });
+    }
+
+    @Test
+    public void should_return_two_ticket_with_1_car_in_each_parking_lot_when_parking_2_cars_given_two_parking_lot_with_capacity_1() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingLotList.add(parkingLot1);
+        parkingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        //when
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+
+        //then
+        assertTrue(parkingLotList.get(0).containsTicket(parkingTicket1));
+        assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
     }
 }
