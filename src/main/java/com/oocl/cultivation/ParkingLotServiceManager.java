@@ -25,4 +25,8 @@ public class ParkingLotServiceManager {
     public ParkingTicket assignParkingBoyToParkCar(ParkingBoy parkingBoy, Car car) {
         return isInManagementList(parkingBoy) ? parkingBoy.park(car) : null;
     }
+
+    public Car assignParkingBoyToFetchCar(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
+        return new Car();
+    }
 }
