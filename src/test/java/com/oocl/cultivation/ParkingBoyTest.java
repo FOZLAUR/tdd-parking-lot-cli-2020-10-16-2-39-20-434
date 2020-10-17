@@ -155,4 +155,25 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(0).containsTicket(parkingTicket1));
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
     }
+
+    @Test
+    public void should_return_park_in_lot_with_more_capacity_when_parking_2_cars_given_two_parking_lots_with_capacity_1_and_capacity_2() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(2);
+        parkingLotList.add(parkingLot1);
+        parkingLotList.add(parkingLot2);
+        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+
+        //when
+        ParkingTicket parkingTicket1 = superParkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = superParkingBoy.park(car2);
+
+        //then
+        assertTrue(parkingLotList.get(1).containsTicket(parkingTicket1));
+        assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
+    }
 }
