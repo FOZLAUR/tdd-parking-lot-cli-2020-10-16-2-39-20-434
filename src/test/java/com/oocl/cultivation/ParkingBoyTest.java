@@ -213,6 +213,6 @@ public class ParkingBoyTest {
         parkingLotServiceManager.assignParkingLot(parkingBoy, parkingLot);
 
         //then
-        assertTrue(parkingBoy.isAssignedAParkingLot());
+        assertTrue(parkingBoy.isAssignedParkingLot(parkingLot));
     }
 }
