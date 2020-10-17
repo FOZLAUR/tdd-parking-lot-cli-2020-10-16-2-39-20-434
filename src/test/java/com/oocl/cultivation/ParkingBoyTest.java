@@ -202,7 +202,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_be_added_properly_when_add_parking_boy_to_management_list_given_parking_lot_service_manager_and_parking_boy() {
+    public void should_be_added_to_management_list_when_add_parking_boy_to_management_list_given_parking_lot_service_manager_and_parking_boy() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
