@@ -23,6 +23,6 @@ public class ParkingLotServiceManager {
     }
 
     public ParkingTicket assignParkingBoyToParkCar(ParkingBoy parkingBoy, Car car) {
-        return null;
+        return isInManagementList(parkingBoy) ? parkingBoy.park(car) : null;
     }
 }
