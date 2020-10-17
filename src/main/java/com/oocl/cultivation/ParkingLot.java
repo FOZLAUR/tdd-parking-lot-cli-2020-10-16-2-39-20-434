@@ -43,7 +43,7 @@ public class ParkingLot {
     }
 
     public boolean isFull(){
-        return parkingTicketCarMap.size() >= capacity;
+        return getParkingTicketCarMapSize() >= getCapacity();
     }
 
     public boolean containsTicket(ParkingTicket parkingTicket){
