@@ -228,10 +228,9 @@ public class ParkingBoyTest {
 
         //when
         ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
-        Car fetchedCar = parkingBoy.fetchCar(parkingTicket);
 
         //then
-        assertSame(car, fetchedCar);
+        assertTrue(parkingLot.containsTicket(parkingTicket));
     }
 
     @Test
