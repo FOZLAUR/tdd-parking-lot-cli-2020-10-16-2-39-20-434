@@ -200,4 +200,19 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket3));
     }
+
+    @Test
+    public void should_be_assigned_properly_when_assign_parking_lot_to_parking_boy_given_parking_lot_service_manager() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        ParkingLot parkingLot = new ParkingLot();
+
+        //when
+        parkingLotServiceManager.assignParkingLot(parkingBoy, parkingLot);
+
+        //then
+        assertTrue(parkingBoy.isAssignedAParkingLot());
+    }
 }

@@ -19,4 +19,8 @@ public class ParkingBoy {
         List<ParkingLot> parkingLotsWithTicket = parkingLotList.stream().filter(parkingLot -> parkingLot.containsTicket(parkingTicket)).collect(Collectors.toList());
         return parkingLotsWithTicket.size() == 0 ? parkingLotList.get(0).fetchCar(parkingTicket) : parkingLotsWithTicket.get(0).fetchCar(parkingTicket) ;
     }
+
+    public boolean isAssignedAParkingLot(){
+        return parkingLotList.size() > 0;
+    }
 }
