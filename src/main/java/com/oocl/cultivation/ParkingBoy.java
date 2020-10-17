@@ -20,6 +20,10 @@ public class ParkingBoy {
         return parkingLotsWithTicket.size() == 0 ? parkingLotList.get(0).fetchCar(parkingTicket) : parkingLotsWithTicket.get(0).fetchCar(parkingTicket) ;
     }
 
+    public void addParkingLotToList(ParkingLot parkingLot){
+        parkingLotList.add(parkingLot);
+    }
+
     public boolean isAssignedParkingLot(ParkingLot parkingLot){
         return parkingLotList.indexOf(parkingLot) != -1;
     }
