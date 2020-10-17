@@ -1,16 +1,10 @@
 package com.oocl.cultivation;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ParkingBoy {
-    private ParkingLot parkingLot;
-    private List<ParkingLot> parkingLotList = new ArrayList<>();
-
-    public ParkingBoy(ParkingLot parkingLot){
-        this.parkingLot = parkingLot;
-    }
+    private List<ParkingLot> parkingLotList;
 
     public ParkingBoy(List<ParkingLot> parkingLotList){
         this.parkingLotList = parkingLotList;
