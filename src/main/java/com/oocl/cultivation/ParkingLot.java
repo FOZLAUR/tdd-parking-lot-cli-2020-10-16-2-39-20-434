@@ -61,4 +61,8 @@ public class ParkingLot {
     public int getRemainingSpaces(){
         return getCapacity()-getParkingTicketCarMapSize();
     }
+
+    public double getAvailableSpaceRatio(){
+        return (double) getRemainingSpaces() / (double) getCapacity();
+    }
 }
