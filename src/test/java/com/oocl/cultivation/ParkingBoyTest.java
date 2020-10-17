@@ -216,6 +216,24 @@ public class ParkingBoyTest {
     }
 
     @Test
+    public void should_return_ticket_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        parkingLotServiceManager.addToManagementList(parkingBoy);
+        Car car = new Car();
+
+        //when
+        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
+
+        //then
+        assertNotNull(parkingTicket);
+    }
+
+    @Test
     public void should_be_assigned_properly_when_assign_parking_lot_to_parking_boy_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
