@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ParkingBoy {
-    private List<ParkingLot> parkingLotList;
+    protected List<ParkingLot> parkingLotList;
 
     public ParkingBoy(List<ParkingLot> parkingLotList){
         this.parkingLotList = parkingLotList;

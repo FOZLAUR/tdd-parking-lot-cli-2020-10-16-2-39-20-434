@@ -49,4 +49,16 @@ public class ParkingLot {
     public boolean containsTicket(ParkingTicket parkingTicket){
         return parkingTicketCarMap.containsKey(parkingTicket);
     }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public int getParkingTicketCarMapSize(){
+        return parkingTicketCarMap.size();
+    }
+
+    public int getRemainingSpaces(){
+        return getCapacity()-getParkingTicketCarMapSize();
+    }
 }

@@ -164,16 +164,16 @@ public class ParkingBoyTest {
         ParkingLot parkingLot2 = new ParkingLot(2);
         parkingLotList.add(parkingLot1);
         parkingLotList.add(parkingLot2);
-        SuperParkingBoy superParkingBoy = new SuperParkingBoy(parkingLotList);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotList);
         Car car1 = new Car();
         Car car2 = new Car();
 
         //when
-        ParkingTicket parkingTicket1 = superParkingBoy.park(car1);
-        ParkingTicket parkingTicket2 = superParkingBoy.park(car2);
+        ParkingTicket parkingTicket1 = smartParkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = smartParkingBoy.park(car2);
 
         //then
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket1));
-        assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
+        assertTrue(parkingLotList.get(0).containsTicket(parkingTicket2));
     }
 }
