@@ -202,6 +202,20 @@ public class ParkingBoyTest {
     }
 
     @Test
+    public void should_be_added_properly_when_add_parking_boy_to_management_list_given_parking_lot_service_manager_and_parking_boy() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+
+        //when
+        parkingLotServiceManager.addToManagementList(parkingBoy);
+
+        //then
+        assertTrue(parkingLotServiceManager.isInManagementList(parkingBoy));
+    }
+
+    @Test
     public void should_be_assigned_properly_when_assign_parking_lot_to_parking_boy_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
