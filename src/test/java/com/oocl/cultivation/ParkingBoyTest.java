@@ -238,6 +238,27 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 3 - Test Case 5: Given Two Parking Lots and No Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    @Test
+    public void should_return_ticket_not_provided_exception_when_fetch_car_given_no_tickets() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLotList.add(parkingLot1);
+        parkingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+
+        //when-then
+        assertThrows(TicketNotProvidedException.class, () -> {
+            parkingBoy.fetchCar(null);
+        });
+    }
+
     //Story 4 - Test Case 1: Given Two Parking Lots with Capacity 1 & 2 When Parking Boy Parks Two Car Then Cars are Parked in Parking Lot with more Positions
     @Test
     public void should_return_park_in_lot_with_more_capacity_when_parking_2_cars_given_smart_parking_boy_two_parking_lots_with_capacity_1_and_capacity_2() {
