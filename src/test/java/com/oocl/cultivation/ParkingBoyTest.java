@@ -147,7 +147,7 @@ public class ParkingBoyTest {
     public void should_return_car_is_not_parked_when_park_car_given_null_car() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
-        ParkingLot parkingLot = new ParkingLot(1);
+        ParkingLot parkingLot = new ParkingLot();
         parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
 

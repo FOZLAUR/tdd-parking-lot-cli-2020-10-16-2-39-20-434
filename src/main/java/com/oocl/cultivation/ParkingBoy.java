@@ -11,7 +11,7 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingLot parkingLotWithPosition = parkingLotList.stream().filter(parkingLot -> !parkingLot.isFull() && !parkingLot.containsCar(car)).findFirst().orElse(null);
+        ParkingLot parkingLotWithPosition = parkingLotList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
         if(car!=null){
             return parkingLotWithPosition == null ? parkingLotList.get(0).park(car) : parkingLotWithPosition.park(car);
         } else {
@@ -20,8 +20,8 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        List<ParkingLot> parkingLotsWithTicket = parkingLotList.stream().filter(parkingLot -> parkingLot.containsTicket(parkingTicket)).collect(Collectors.toList());
-        return parkingLotsWithTicket.size() == 0 ? parkingLotList.get(0).fetchCar(parkingTicket) : parkingLotsWithTicket.get(0).fetchCar(parkingTicket) ;
+        ParkingLot parkingLotWithTicket = parkingLotList.stream().filter(parkingLot -> parkingLot.containsTicket(parkingTicket)).findFirst().orElse(null);
+        return parkingLotWithTicket == null ? parkingLotList.get(0).fetchCar(parkingTicket) : parkingLotWithTicket.fetchCar(parkingTicket) ;
     }
 
     public void addParkingLotToList(ParkingLot parkingLot){
