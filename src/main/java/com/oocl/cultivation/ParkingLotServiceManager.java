@@ -39,4 +39,9 @@ public class ParkingLotServiceManager {
     public Car assignParkingBoyToFetchCar(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
         return isInManagementList(parkingBoy) ? parkingBoy.fetchCar(parkingTicket) : null;
     }
+
+    public ParkingTicket park(Car car) {
+        ParkingLot parkingLotWithPosition = parkingLotsList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
+        return parkingLotWithPosition == null ? parkingLotsList.get(0).park(car) : parkingLotWithPosition.park(car);
+    }
 }
