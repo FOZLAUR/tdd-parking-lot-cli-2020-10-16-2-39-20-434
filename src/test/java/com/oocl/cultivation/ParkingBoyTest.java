@@ -11,6 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
+    //Story 1 - Test Case 1: Given Car When Parking Boy Parks the Car Then Parking Ticket Returned
     @Test
     public void should_return_ticket_when_park_car_given_car() {
         //given
@@ -27,6 +28,7 @@ public class ParkingBoyTest {
         assertNotNull(parkingTicket);
     }
 
+    //Story 1 - Test Case 2: Given Parking Ticket When Parking Boy Fetches Car Then Car is Returned
     @Test
     public void should_return_right_car_when_fetch_car_given_ticket() {
         //given
@@ -44,6 +46,7 @@ public class ParkingBoyTest {
         assertSame(car, fetchedCar);
     }
 
+    //Story 1 - Test Case 3: Given Parking Two Cars When Parking Boy Fetches Cars with Tickets Then Cars are Returned
     @Test
     public void should_return_two_cars_when_fetch_car_given_two_ticket() {
         //given
@@ -65,6 +68,7 @@ public class ParkingBoyTest {
         assertSame(car2, fetchedCar2);
     }
 
+    //Story 1/2 - Test Case 4: Given Wrong Ticket When Parking Boy Fetches Car Then No Car Returned (UnrecognizedTicketException)
     @Test
     public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
         //given
@@ -86,6 +90,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 1/2 - Test Case 5: Given No Ticket When Parking Boy Fetches Car Then No Car Returned (TicketNotProvidedException)
     @Test
     public void should_return_no_car_when_fetch_car_given_no_ticket() {
         //given
@@ -100,6 +105,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 1/2 - Test Case 6: Given Used Ticket When Parking Boy Fetches Car Then No Car Returned (UnrecognizedTicketException)
     @Test
     public void should_return_no_car_when_fetch_car_given_used_ticket() {
         //given
@@ -118,6 +124,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 1/2 - Test Case 7: Given Used Ticket When Parking Boy Fetches Car Then No Car Returned (ParkingLotOutOfPositionsException)
     @Test
     public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
         //given
@@ -135,6 +142,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 3 - Test Case 1: Given Two Parking Lots When Parking Boy Parks Two Car Then Cars are Parked sequentially
     @Test
     public void should_return_two_ticket_with_1_car_in_each_parking_lot_when_parking_2_cars_given_two_parking_lot_with_capacity_1() {
         //given
@@ -156,6 +164,7 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
     }
 
+    //Story 4 - Test Case 1: Given Two Parking Lots with Capacity 1 & 2 When Parking Boy Parks Two Car Then Cars are Parked in Parking Lot with more Positions
     @Test
     public void should_return_park_in_lot_with_more_capacity_when_parking_2_cars_given_smart_parking_boy_two_parking_lots_with_capacity_1_and_capacity_2() {
         //given
@@ -177,6 +186,7 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(0).containsTicket(parkingTicket2));
     }
 
+    //Story 5 - Test Case 1: Given Two Parking Lots with Capacity 2 & 3 When Parking Boy Parks Two Car Then Cars are Parked in Parking Lot with higher Availability Ratio
     @Test
     public void should_park_in_lot_with_higher_position_rate_when_parking_3_cars_given_super_smart_parking_boy_two_parking_lots_with_capacity_2_and_capacity_3() {
         //given
@@ -201,6 +211,7 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket3));
     }
 
+    //Story 6 (AC1) - Test Case 1: Given Parking Lot Service Manager When Manager Adds Parking Boy to Management List Then Parking Boy is Successfully Added
     @Test
     public void should_be_added_to_management_list_when_add_parking_boy_to_management_list_given_parking_lot_service_manager_and_parking_boy() {
         //given
@@ -215,6 +226,7 @@ public class ParkingBoyTest {
         assertTrue(parkingLotServiceManager.isInManagementList(parkingBoy));
     }
 
+    //Story 6 (AC1) - Test Case 2: Given Parking Lot Service Manager When Manager Assigns Parking Boy to Park Car Then Car is Parked and Ticket is Returned
     @Test
     public void should_return_ticket_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car() {
         //given
@@ -233,6 +245,7 @@ public class ParkingBoyTest {
         assertTrue(parkingLot.containsTicket(parkingTicket));
     }
 
+    //Story 6 (AC1) - Test Case 3: Given Parking Lot Service Manager and Ticket When Manager Assigns Parking Boy to fetch Car Then Car is Fetched and Ticket is Returned
     @Test
     public void should_return_fetched_car_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_fetch_car() {
         //given
@@ -243,17 +256,18 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         parkingLotServiceManager.addToManagementList(parkingBoy);
         Car car = new Car();
+        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
 
         //when
-        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
         Car fetchedCar = parkingLotServiceManager.assignParkingBoyToFetchCar(parkingBoy, parkingTicket);
 
         //then
         assertSame(car, fetchedCar);
     }
 
+    //Story 6 (AC3) - Test Case 1: Given Parking Lot Service Manager and Wrong Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_unrecognized_ticket_exception_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_wrong_ticket() {
+    public void should_return_unrecognized_ticket_exception_when_parking_manager_assigns_parking_boy_fetch_car_given_parking_lot_service_manager_wrong_ticket() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -273,6 +287,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 6 (AC3) - Test Case 2: Given Parking Lot Service Manager and Used Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
     @Test
     public void should_return_unrecognized_ticket_exception_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_used_ticket() {
         //given
@@ -283,9 +298,9 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         parkingLotServiceManager.addToManagementList(parkingBoy);
         Car car = new Car();
+        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
 
         //when
-        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
         parkingLotServiceManager.assignParkingBoyToFetchCar(parkingBoy, parkingTicket);
 
         //then
@@ -294,6 +309,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 6 (AC3) - Test Case 3: Given Parking Lot Service Manager and No Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (TicketNotProvidedException)
     @Test
     public void should_return_ticket_not_provided_exception_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_no_ticket() {
         //given
@@ -310,8 +326,9 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 6 (AC3) - Test Case 4: Given Parking Lot Service Manager and Car Parked in Lot with Capacity 1 When Manager Assigns Parking Boy to Fetch Another Car in Full Parking Lot Then No Ticket is Returned (ParkingLotOutOfPositionsException)
     @Test
-    public void should_return_parking_lot_out_of_positions_exception_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_no_ticket() {
+    public void should_return_parking_lot_out_of_positions_exception_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_when_parking_lot_is_full() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -329,6 +346,7 @@ public class ParkingBoyTest {
         });
     }
 
+    //Story 6 - Extra Test Case: Given Parking Manager and Parking Lot When Parking Manager assigns Parking Lot to Parking Boy Then Parking Lot is successfully assigned to Parking Boy
     @Test
     public void should_be_assigned_properly_when_assign_parking_lot_to_parking_boy_given_parking_lot_service_manager() {
         //given
