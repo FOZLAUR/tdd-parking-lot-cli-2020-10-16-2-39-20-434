@@ -12,7 +12,7 @@ public class ParkingBoy {
 
     public ParkingTicket park(Car car) {
         ParkingLot parkingLotWithPosition = parkingLotList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
-        if(car!=null){
+        if(car!=null && !isCarParkedInAnyParkingLots(car)){
             return parkingLotWithPosition == null ? parkingLotList.get(0).park(car) : parkingLotWithPosition.park(car);
         } else {
             return null;
@@ -30,5 +30,9 @@ public class ParkingBoy {
 
     public boolean isAssignedParkingLot(ParkingLot parkingLot){
         return parkingLotList.indexOf(parkingLot) != -1;
+    }
+
+    public boolean isCarParkedInAnyParkingLots(Car car){
+        return parkingLotList.stream().anyMatch(parkingLot -> parkingLot.containsCar(car));
     }
 }
