@@ -279,6 +279,22 @@ public class ParkingBoyTest {
         assertTrue(parkingLotServiceManager.isInParkingLotList(parkingLot));
     }
 
+    //Story 6 (AC2) - Test Case 2: Given Parking Lot Service Manager and Parking Lot When Manager Parks Car Then Parking Ticket is Returned
+    @Test
+    public void should_return_parking_ticket_when_parking_lot_service_manager_parks_car_given_parking_lot_service_manager_car_and_parking_lot() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotServiceManager.addParkingLotToParkingLotList(parkingLot);
+        Car car = new Car();
+
+        //when
+        ParkingTicket parkingTicket = parkingLotServiceManager.park(car);
+
+        // then
+        assertNotNull(parkingTicket);
+    }
+
     //Story 6 (AC3) - Test Case 1: Given Parking Lot Service Manager and Wrong Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
     @Test
     public void should_return_unrecognized_ticket_exception_when_parking_manager_assigns_parking_boy_fetch_car_given_parking_lot_service_manager_wrong_ticket() {
