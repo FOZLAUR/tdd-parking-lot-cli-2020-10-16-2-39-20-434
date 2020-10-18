@@ -360,6 +360,27 @@ public class ParkingBoyTest {
         assertSame(car, fetchedCar);
     }
 
+    //Story 6 (AC2) - Test Case 3: Given Two Parking Lot Service Managers and Two Parking Lots When Manager Fetches Car from other Lot owned by other manager Then No Car is Returned (UnrecognizedTicketException)
+    @Test
+    public void should_return_unrecognized_parking_ticket_exception_when_parking_lot_service_manager_fetch_car_given_parking_lot_service_manager_fetch_car_from_another_parking_lot() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager1 = new ParkingLotServiceManager();
+        ParkingLotServiceManager parkingLotServiceManager2 = new ParkingLotServiceManager();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLotServiceManager1.addParkingLotToParkingLotList(parkingLot1);
+        parkingLotServiceManager2.addParkingLotToParkingLotList(parkingLot2);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingTicket parkingTicket1 = parkingLotServiceManager1.park(car1);
+        ParkingTicket parkingTicket2 = parkingLotServiceManager2.park(car2);
+
+        //when-then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingLotServiceManager1.fetchCar(parkingTicket2);
+        });
+    }
+
     //Story 6 (AC3) - Test Case 1: Given Parking Lot Service Manager and Wrong Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
     @Test
     public void should_return_unrecognized_ticket_exception_when_parking_manager_assigns_parking_boy_fetch_car_given_parking_lot_service_manager_wrong_ticket() {
