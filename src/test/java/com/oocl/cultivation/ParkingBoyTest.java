@@ -255,6 +255,27 @@ public class ParkingBoyTest {
     }
 
     @Test
+    public void should_return_unrecognized_ticket_exception_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_used_ticket() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        parkingLotServiceManager.addToManagementList(parkingBoy);
+        Car car = new Car();
+
+        //when
+        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
+        parkingLotServiceManager.assignParkingBoyToFetchCar(parkingBoy, parkingTicket);
+
+        //then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingLotServiceManager.assignParkingBoyToFetchCar(parkingBoy, parkingTicket);
+        });
+    }
+
+    @Test
     public void should_return_fetched_car_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_fetch_car() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
