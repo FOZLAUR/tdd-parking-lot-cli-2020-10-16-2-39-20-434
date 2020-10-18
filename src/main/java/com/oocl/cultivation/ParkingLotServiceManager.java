@@ -44,4 +44,8 @@ public class ParkingLotServiceManager {
         ParkingLot parkingLotWithPosition = parkingLotsList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
         return parkingLotWithPosition == null ? parkingLotsList.get(0).park(car) : parkingLotWithPosition.park(car);
     }
+
+    public Car fetchCar(ParkingTicket parkingTicket) {
+        return new Car();
+    }
 }
