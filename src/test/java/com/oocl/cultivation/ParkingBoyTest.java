@@ -164,6 +164,28 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
     }
 
+    //Story 3 - Test Case 2: Given Two Parking Lots When Parking Boy Parks Two Car Then Cars are Parked sequentially
+    @Test
+    public void should_return_parking_lots_out_of_position_exception_when_park_car_given_two_parking_lot_with_capacity_1_and_three_cars() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot(1);
+        ParkingLot parkingLot2 = new ParkingLot(1);
+        parkingLotList.add(parkingLot1);
+        parkingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Car car3 = new Car();
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+
+        //when-then
+        assertThrows(ParkingLotOutOfPositionsException.class, () -> {
+            parkingBoy.park(car3);
+        });
+    }
+
     //Story 4 - Test Case 1: Given Two Parking Lots with Capacity 1 & 2 When Parking Boy Parks Two Car Then Cars are Parked in Parking Lot with more Positions
     @Test
     public void should_return_park_in_lot_with_more_capacity_when_parking_2_cars_given_smart_parking_boy_two_parking_lots_with_capacity_1_and_capacity_2() {
