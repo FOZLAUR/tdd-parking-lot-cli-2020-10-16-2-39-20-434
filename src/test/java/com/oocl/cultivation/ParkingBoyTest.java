@@ -186,7 +186,33 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 3 - Test Case 3: Given Two Parking Lots and Two Wrong Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    //Story 3 - Test Case 3: Given Two Parking Lots and Two Used Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    @Test
+    public void should_return_unrecognized_ticket_exception_when_fetch_car_given_used_tickets() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLotList.add(parkingLot1);
+        parkingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingTicket parkingTicket1 = parkingBoy.park(car1);
+        ParkingTicket parkingTicket2 = parkingBoy.park(car2);
+        parkingBoy.fetchCar(parkingTicket1);
+        parkingBoy.fetchCar(parkingTicket2);
+
+        //when-then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(parkingTicket1);
+        });
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(parkingTicket2);
+        });
+    }
+
+    //Story 3 - Test Case 4: Given Two Parking Lots and Two Wrong Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
     @Test
     public void should_return_unrecognized_ticket_exception_when_fetch_car_given_wrong_tickets() {
         //given
