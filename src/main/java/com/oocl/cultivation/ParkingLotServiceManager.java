@@ -22,6 +22,13 @@ public class ParkingLotServiceManager {
         return managementList.indexOf(parkingBoy) != -1;
     }
 
+    public void addParkingLotToParkingLotList(ParkingLot parkingLot) {
+    }
+
+    public boolean isInParkingLotList(ParkingLot parkingLot) {
+        return false;
+    }
+
     public ParkingTicket assignParkingBoyToParkCar(ParkingBoy parkingBoy, Car car) {
         return isInManagementList(parkingBoy) ? parkingBoy.park(car) : null;
     }

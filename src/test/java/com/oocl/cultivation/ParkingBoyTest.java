@@ -265,6 +265,20 @@ public class ParkingBoyTest {
         assertSame(car, fetchedCar);
     }
 
+    //Story 6 (AC2) - Test Case 1: Given Parking Lot Service Manager and Parking Lot When Manager is Assigned a Parking Lot Then Parking Lot is Successfully Added
+    @Test
+    public void should_return_parking_lot_assigned_to_parking_manager_when_parking_lot_is_assigned_to_parking_lot_service_manager_given_parking_lot_service_manager_and_parking_lot() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        ParkingLot parkingLot = new ParkingLot();
+
+        //when
+        parkingLotServiceManager.addParkingLotToParkingLotList(parkingLot);
+
+        // then
+        assertTrue(parkingLotServiceManager.isInParkingLotList(parkingLot));
+    }
+
     //Story 6 (AC3) - Test Case 1: Given Parking Lot Service Manager and Wrong Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
     @Test
     public void should_return_unrecognized_ticket_exception_when_parking_manager_assigns_parking_boy_fetch_car_given_parking_lot_service_manager_wrong_ticket() {
