@@ -5,9 +5,11 @@ import java.util.List;
 
 public class ParkingLotServiceManager {
     List<ParkingBoy> managementList;
+    List<ParkingLot> parkingLotsList;
 
     public ParkingLotServiceManager(){
         managementList = new ArrayList<>();
+        parkingLotsList = new ArrayList<>();
     }
 
     public void assignParkingLot(ParkingBoy parkingBoy, ParkingLot parkingLot) {
@@ -23,10 +25,11 @@ public class ParkingLotServiceManager {
     }
 
     public void addParkingLotToParkingLotList(ParkingLot parkingLot) {
+        parkingLotsList.add(parkingLot);
     }
 
     public boolean isInParkingLotList(ParkingLot parkingLot) {
-        return false;
+        return parkingLotsList.indexOf(parkingLot) != -1;
     }
 
     public ParkingTicket assignParkingBoyToParkCar(ParkingBoy parkingBoy, Car car) {
