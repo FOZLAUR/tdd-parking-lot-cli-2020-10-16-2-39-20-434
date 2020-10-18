@@ -2,6 +2,7 @@ package com.oocl.cultivation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParkingLotServiceManager {
     List<ParkingBoy> managementList;
@@ -46,6 +47,7 @@ public class ParkingLotServiceManager {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        return new Car();
+        ParkingLot parkingLotWithTicket = parkingLotsList.stream().filter(parkingLot -> parkingLot.containsTicket(parkingTicket)).findFirst().orElse(null);
+        return parkingLotWithTicket == null ? parkingLotsList.get(0).fetchCar(parkingTicket) : parkingLotWithTicket.fetchCar(parkingTicket) ;
     }
 }
