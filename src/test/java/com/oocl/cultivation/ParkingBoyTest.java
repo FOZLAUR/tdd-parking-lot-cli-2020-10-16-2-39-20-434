@@ -234,7 +234,7 @@ public class ParkingBoyTest {
     }
 
     @Test
-    public void should_return_unrecognized_ticket_exception_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car() {
+    public void should_return_unrecognized_ticket_exception_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_wrong_ticket() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -245,11 +245,12 @@ public class ParkingBoyTest {
         Car car = new Car();
 
         //when
-        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
-        ParkingTicket parkingTicket1 = new ParkingTicket();
-        //when-then
+        parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
+        ParkingTicket wrongTicket = new ParkingTicket();
+
+        //then
         assertThrows(UnrecognizedTicketException.class, () -> {
-            parkingLotServiceManager.assignParkingBoyToFetchCar(parkingBoy, parkingTicket1);
+            parkingLotServiceManager.assignParkingBoyToFetchCar(parkingBoy, wrongTicket);
         });
     }
 
