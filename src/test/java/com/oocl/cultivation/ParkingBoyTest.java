@@ -154,6 +154,22 @@ public class ParkingBoyTest {
         assertNull(parkingBoy.park(null));
     }
 
+    //Story 1/2 - Test Case 9: Given parked Car When Parking Boy Parks Car Then Car is not Parked
+    @Test
+    public void should_return_car_is_not_parked_when_park_car_given_parked_car() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car = new Car();
+        ParkingTicket correctParkingTicket = parkingBoy.park(car);
+        ParkingTicket wrongParkingTicket = parkingBoy.park(car);
+
+        assertNotNull(correctParkingTicket);
+        assertNull(wrongParkingTicket);
+    }
+
     //Story 3 - Test Case 1: Given Two Parking Lots When Parking Boy Parks Two Car Then Cars are Parked sequentially
     @Test
     public void should_return_two_ticket_with_1_car_in_each_parking_lot_when_parking_2_cars_given_two_parking_lot_with_capacity_1() {
