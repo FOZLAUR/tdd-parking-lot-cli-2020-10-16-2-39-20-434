@@ -164,7 +164,7 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
     }
 
-    //Story 3 - Test Case 2: Given Two Parking Lots When Parking Boy Parks Two Car Then Cars are Parked sequentially
+    //Story 3 - Test Case 2: Given Two Parking Lots When Parking Boy Parks Three Cars Then Third Car is not Parked (ParkingLotOutOfPositionsException)
     @Test
     public void should_return_parking_lots_out_of_position_exception_when_park_car_given_two_parking_lot_with_capacity_1_and_three_cars() {
         //given
@@ -183,6 +183,32 @@ public class ParkingBoyTest {
         //when-then
         assertThrows(ParkingLotOutOfPositionsException.class, () -> {
             parkingBoy.park(car3);
+        });
+    }
+
+    //Story 3 - Test Case 3: Given Two Parking Lots and Two Wrong Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    @Test
+    public void should_return_unrecognized_ticket_exception_when_fetch_car_given_wrong_tickets() {
+        //given
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot1 = new ParkingLot();
+        ParkingLot parkingLot2 = new ParkingLot();
+        parkingLotList.add(parkingLot1);
+        parkingLotList.add(parkingLot2);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        parkingBoy.park(car1);
+        parkingBoy.park(car2);
+        ParkingTicket wrongParkingTicket1 = new ParkingTicket();
+        ParkingTicket wrongParkingTicket2 = new ParkingTicket();
+
+        //when-then
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(wrongParkingTicket1);
+        });
+        assertThrows(UnrecognizedTicketException.class, () -> {
+            parkingBoy.fetchCar(wrongParkingTicket2);
         });
     }
 
