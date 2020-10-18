@@ -360,6 +360,21 @@ public class ParkingBoyTest {
         assertSame(car, fetchedCar);
     }
 
+    //Story 6 (AC1) - Test Case 4: Given Parking Lot Service Manager and Parking Boy When Manager Assigns Parking Boy who is not in management list to park Car Then Car is not Parked
+    @Test
+    public void should_return_car_is_not_parked_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_not_in_management_list_to_park_car() {
+        //given
+        ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
+        List<ParkingLot> parkingLotList = new ArrayList<>();
+        ParkingLot parkingLot = new ParkingLot();
+        parkingLotList.add(parkingLot);
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
+        Car car = new Car();
+        ParkingTicket parkingTicket = parkingLotServiceManager.assignParkingBoyToParkCar(parkingBoy, car);
+
+        assertNull(parkingTicket);
+    }
+
     //Story 6 (AC2) - Test Case 1: Given Parking Lot Service Manager and Parking Lot When Manager is Assigned a Parking Lot Then Parking Lot is Successfully Added
     @Test
     public void should_return_parking_lot_assigned_to_parking_manager_when_parking_lot_is_assigned_to_parking_lot_service_manager_given_parking_lot_service_manager_and_parking_lot() {
