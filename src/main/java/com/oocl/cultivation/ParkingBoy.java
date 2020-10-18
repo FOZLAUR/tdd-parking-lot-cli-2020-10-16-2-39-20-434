@@ -11,8 +11,12 @@ public class ParkingBoy {
     }
 
     public ParkingTicket park(Car car) {
-        List<ParkingLot> parkingLotsWithPosition = parkingLotList.stream().filter(parkingLot -> !parkingLot.isFull()).collect(Collectors.toList());
-        return parkingLotsWithPosition.size() == 0 ? parkingLotList.get(0).park(car) : parkingLotsWithPosition.get(0).park(car);
+        ParkingLot parkingLotWithPosition = parkingLotList.stream().filter(parkingLot -> !parkingLot.isFull() && !parkingLot.containsCar(car)).findFirst().orElse(null);
+        if(car!=null){
+            return parkingLotWithPosition == null ? parkingLotList.get(0).park(car) : parkingLotWithPosition.park(car);
+        } else {
+            return null;
+        }
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {

@@ -50,6 +50,10 @@ public class ParkingLot {
         return parkingTicketCarMap.containsKey(parkingTicket);
     }
 
+    public boolean containsCar(Car car){
+        return parkingTicketCarMap.containsValue(car);
+    }
+
     public int getCapacity() {
         return capacity;
     }
