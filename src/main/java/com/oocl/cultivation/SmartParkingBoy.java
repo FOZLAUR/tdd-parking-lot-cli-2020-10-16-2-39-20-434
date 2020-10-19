@@ -26,6 +26,6 @@ public class SmartParkingBoy extends ParkingBoy{
         } else if (parkingLotWithPosition==null) {
             throw new ParkingLotOutOfPositionsException();
         }
-        return parkingLotWithPosition == null ? parkingLotList.get(0).park(car) : parkingLotWithPosition.park(car);
+        return parkingLotWithPosition.park(car);
     }
 }
