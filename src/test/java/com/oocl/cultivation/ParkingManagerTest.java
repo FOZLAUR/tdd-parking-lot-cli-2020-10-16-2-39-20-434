@@ -141,7 +141,7 @@ public class ParkingManagerTest {
         parkingLotServiceManager2.addParkingLotToParkingLotList(parkingLot2);
         Car car1 = new Car();
         Car car2 = new Car();
-        ParkingTicket parkingTicket1 = parkingLotServiceManager1.park(car1);
+        parkingLotServiceManager1.park(car1);
         ParkingTicket parkingTicket2 = parkingLotServiceManager2.park(car2);
 
         //when-then

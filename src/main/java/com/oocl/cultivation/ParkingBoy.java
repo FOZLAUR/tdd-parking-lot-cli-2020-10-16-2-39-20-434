@@ -1,7 +1,6 @@
 package com.oocl.cultivation;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ParkingBoy {
     protected List<ParkingLot> parkingLotList;
