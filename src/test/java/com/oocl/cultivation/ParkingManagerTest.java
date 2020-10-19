@@ -1,5 +1,6 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.ParkingBoyNotInListException;
 import com.oocl.exceptions.ParkingLotOutOfPositionsException;
 import com.oocl.exceptions.TicketNotProvidedException;
 import com.oocl.exceptions.UnrecognizedTicketException;
@@ -89,9 +90,11 @@ public class ParkingManagerTest {
         parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         Car car = new Car();
-        ParkingTicket parkingTicket = parkingManager.assignParkingBoyToParkCar(parkingBoy, car);
 
-        assertNull(parkingTicket);
+        //when-then
+        assertThrows(ParkingBoyNotInListException.class, () -> {
+            parkingManager.assignParkingBoyToParkCar(parkingBoy, car);
+        });
     }
 
     //Story 6 (AC2) - Test Case 1:

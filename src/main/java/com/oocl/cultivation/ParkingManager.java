@@ -35,11 +35,17 @@ public class ParkingManager {
     }
 
     public ParkingTicket assignParkingBoyToParkCar(ParkingBoy parkingBoy, Car car) {
-        return isInManagementList(parkingBoy) ? parkingBoy.park(car) : null;
+        if (!isInManagementList(parkingBoy) ) {
+            throw new ParkingBoyNotInListException();
+        }
+        return parkingBoy.park(car);
     }
 
     public Car assignParkingBoyToFetchCar(ParkingBoy parkingBoy, ParkingTicket parkingTicket) {
-        return isInManagementList(parkingBoy) ? parkingBoy.fetchCar(parkingTicket) : null;
+        if (!isInManagementList(parkingBoy) ) {
+            throw new ParkingBoyNotInListException();
+        }
+        return parkingBoy.fetchCar(parkingTicket);
     }
 
     public ParkingTicket park(Car car) {
