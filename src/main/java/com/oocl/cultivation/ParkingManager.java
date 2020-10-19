@@ -3,11 +3,11 @@ package com.oocl.cultivation;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParkingLotServiceManager {
+public class ParkingManager {
     List<ParkingBoy> managementList;
     List<ParkingLot> parkingLotsList;
 
-    public ParkingLotServiceManager(){
+    public ParkingManager(){
         managementList = new ArrayList<>();
         parkingLotsList = new ArrayList<>();
     }
