@@ -1,8 +1,6 @@
 package com.oocl.cultivation;
 
-import com.oocl.exceptions.CarIsAlreadyParkedException;
-import com.oocl.exceptions.CarIsNullException;
-import com.oocl.exceptions.ParkingLotOutOfPositionsException;
+import com.oocl.exceptions.*;
 
 import java.util.List;
 
@@ -27,7 +25,12 @@ public class ParkingBoy {
 
     public Car fetchCar(ParkingTicket parkingTicket) {
         ParkingLot parkingLotWithTicket = parkingLotList.stream().filter(parkingLot -> parkingLot.containsTicket(parkingTicket)).findFirst().orElse(null);
-        return parkingLotWithTicket == null ? parkingLotList.get(0).fetchCar(parkingTicket) : parkingLotWithTicket.fetchCar(parkingTicket) ;
+        if(parkingTicket==null){
+            throw new TicketNotProvidedException();
+        } else if (parkingTicket!=null && parkingLotWithTicket == null) {
+            throw new UnrecognizedTicketException();
+        }
+        return parkingLotWithTicket.fetchCar(parkingTicket) ;
     }
 
     public void addParkingLotToList(ParkingLot parkingLot){
