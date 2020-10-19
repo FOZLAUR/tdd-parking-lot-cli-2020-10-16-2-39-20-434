@@ -22,13 +22,8 @@ public class ParkingLot {
     }
 
     public ParkingTicket park(Car car) {
-        ParkingTicket parkingTicket;
-        if(isFull()){
-            throw new ParkingLotOutOfPositionsException();
-        } else {
-            parkingTicket = new ParkingTicket();
-            parkingTicketCarMap.put(parkingTicket, car);
-        }
+        ParkingTicket parkingTicket  = new ParkingTicket();
+        parkingTicketCarMap.put(parkingTicket, car);
         return parkingTicket;
     }
 

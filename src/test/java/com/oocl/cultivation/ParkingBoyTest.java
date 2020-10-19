@@ -1,8 +1,6 @@
 package com.oocl.cultivation;
 
-import com.oocl.exceptions.ParkingLotOutOfPositionsException;
-import com.oocl.exceptions.TicketNotProvidedException;
-import com.oocl.exceptions.UnrecognizedTicketException;
+import com.oocl.exceptions.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -175,7 +173,10 @@ public class ParkingBoyTest {
         parkingLotList.add(parkingLot);
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
 
-        assertNull(parkingBoy.park(null));
+        //when-then
+        assertThrows(CarIsNullException.class, () -> {
+            parkingBoy.park(null);
+        });
     }
 
     //Story 1/2 - Test Case 9:
@@ -191,10 +192,12 @@ public class ParkingBoyTest {
         ParkingBoy parkingBoy = new ParkingBoy(parkingLotList);
         Car car = new Car();
         ParkingTicket correctParkingTicket = parkingBoy.park(car);
-        ParkingTicket wrongParkingTicket = parkingBoy.park(car);
 
         assertNotNull(correctParkingTicket);
-        assertNull(wrongParkingTicket);
+        //when-then
+        assertThrows(CarIsAlreadyParkedException.class, () -> {
+            parkingBoy.park(car);
+        });
     }
 
     //Story 3 - Test Case 1:
