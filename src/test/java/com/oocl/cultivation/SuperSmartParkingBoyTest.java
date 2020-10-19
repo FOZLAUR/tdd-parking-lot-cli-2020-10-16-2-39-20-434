@@ -46,7 +46,7 @@ public class SuperSmartParkingBoyTest {
     // When Parking Boy Parks Four Car
     // Then 3 Cars are Parked in Parking Lot but 4th is not
     @Test
-    public void should_return_no_ticket_when_parking_4_cars_given_two_parking_lots_with_capacity_2_and_capacity_3() {
+    public void should_return_no_ticket_when_parking_6_cars_given_two_parking_lots_with_capacity_2_and_capacity_3() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(2);
@@ -67,8 +67,8 @@ public class SuperSmartParkingBoyTest {
         ParkingTicket parkingTicket4 = superSmartParkingBoy.park(car4);
         ParkingTicket parkingTicket5 = superSmartParkingBoy.park(car5);
 
-        assertTrue(parkingLotList.get(1).containsTicket(parkingTicket1));
-        assertTrue(parkingLotList.get(0).containsTicket(parkingTicket2));
+        assertTrue(parkingLotList.get(0).containsTicket(parkingTicket1));
+        assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket3));
         assertTrue(parkingLotList.get(0).containsTicket(parkingTicket4));
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket5));
