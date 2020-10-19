@@ -9,7 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SuperSmartParkingBoyTest {
 
-    //Story 5 - Test Case 1: Given Two Parking Lots with Capacity 2 & 3 When Parking Boy Parks Two Car Then Cars are Parked in Parking Lot with higher Availability Ratio
+    //Story 5 - Test Case 1:
+    // Given Two Parking Lots with Capacity 2 & 3
+    // When Parking Boy Parks Two Car
+    // Then Cars are Parked in Parking Lot with higher Availability Ratio
     @Test
     public void should_park_in_lot_with_higher_position_rate_when_parking_3_cars_given_super_smart_parking_boy_two_parking_lots_with_capacity_2_and_capacity_3() {
         //given

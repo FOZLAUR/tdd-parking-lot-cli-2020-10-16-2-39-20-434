@@ -9,7 +9,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SmartParkingBoyTest {
 
-    //Story 4 - Test Case 1: Given Two Parking Lots with Capacity 1 & 2 When Parking Boy Parks Two Car Then Cars are Parked in Parking Lot with more Positions
+    //Story 4 - Test Case 1:
+    // Given Two Parking Lots with Capacity 1 & 2
+    // When Parking Boy Parks Two Car
+    // Then Cars are Parked in Parking Lot with more Positions
     @Test
     public void should_return_park_in_lot_with_more_capacity_when_parking_2_cars_given_smart_parking_boy_two_parking_lots_with_capacity_1_and_capacity_2() {
         //given

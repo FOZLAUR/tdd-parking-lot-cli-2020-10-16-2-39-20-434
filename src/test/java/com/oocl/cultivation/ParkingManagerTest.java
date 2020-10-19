@@ -13,9 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingManagerTest {
 
 
-    //Story 6 (AC1) - Test Case 1: Given Parking Lot Service Manager When Manager Adds Parking Boy to Management List Then Parking Boy is Successfully Added
+    //Story 6 (AC1) - Test Case 1:
+    // Given Parking Lot Service Manager
+    // When Manager Adds Parking Boy to Management List
+    // Then Parking Boy is Successfully Added
     @Test
-    public void should_be_added_to_management_list_when_add_parking_boy_to_management_list_given_parking_lot_service_manager_and_parking_boy() {
+    public void should_be_added_to_management_list_when_add_parking_boy_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -28,9 +31,12 @@ public class ParkingManagerTest {
         assertTrue(parkingLotServiceManager.isInManagementList(parkingBoy));
     }
 
-    //Story 6 (AC1) - Test Case 2: Given Parking Lot Service Manager When Manager Assigns Parking Boy to Park Car Then Car is Parked and Ticket is Returned
+    //Story 6 (AC1) - Test Case 2:
+    // Given Parking Lot Service Manager
+    // When Manager Assigns Parking Boy to Park Car
+    // Then Car is Parked and Ticket is Returned
     @Test
-    public void should_return_ticket_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car() {
+    public void should_return_ticket_when_parking_boy_park_car_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -47,9 +53,12 @@ public class ParkingManagerTest {
         assertTrue(parkingLot.containsTicket(parkingTicket));
     }
 
-    //Story 6 (AC1) - Test Case 3: Given Parking Lot Service Manager and Ticket When Manager Assigns Parking Boy to fetch Car Then Car is Fetched and Ticket is Returned
+    //Story 6 (AC1) - Test Case 3:
+    // Given Parking Lot Service Manager and Ticket
+    // When Manager Assigns Parking Boy to fetch Car
+    // Then Car is Fetched and Ticket is Returned
     @Test
-    public void should_return_fetched_car_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_fetch_car() {
+    public void should_return_fetched_car_when_parking_boy_fetch_car_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -67,9 +76,12 @@ public class ParkingManagerTest {
         assertSame(car, fetchedCar);
     }
 
-    //Story 6 (AC1) - Test Case 4: Given Parking Lot Service Manager and Parking Boy When Manager Assigns Parking Boy who is not in management list to park Car Then Car is not Parked
+    //Story 6 (AC1) - Test Case 4:
+    // Given Parking Lot Service Manager and Parking Boy
+    // When Manager Assigns Parking Boy who is not in management list to park Car
+    // Then Car is not Parked
     @Test
-    public void should_return_car_is_not_parked_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_not_in_management_list_to_park_car() {
+    public void should_not_return_ticket_when_parking_boy_not_in_list_fetch_car_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -82,9 +94,12 @@ public class ParkingManagerTest {
         assertNull(parkingTicket);
     }
 
-    //Story 6 (AC2) - Test Case 1: Given Parking Lot Service Manager and Parking Lot When Manager is Assigned a Parking Lot Then Parking Lot is Successfully Added
+    //Story 6 (AC2) - Test Case 1:
+    // Given Parking Lot Service Manager and Parking Lot
+    // When Manager is Assigned a Parking Lot
+    // Then Parking Lot is Successfully Added
     @Test
-    public void should_return_parking_lot_assigned_to_parking_manager_when_parking_lot_is_assigned_to_parking_lot_service_manager_given_parking_lot_service_manager_and_parking_lot() {
+    public void should_return_parking_lot_assigned_to_parking_manager_when_add_parking_lot_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         ParkingLot parkingLot = new ParkingLot();
@@ -96,9 +111,12 @@ public class ParkingManagerTest {
         assertTrue(parkingLotServiceManager.isInParkingLotList(parkingLot));
     }
 
-    //Story 6 (AC2) - Test Case 2: Given Parking Lot Service Manager and Parking Lot When Manager Parks Car Then Parking Ticket is Returned
+    //Story 6 (AC2) - Test Case 2:
+    // Given Parking Lot Service Manager and Parking Lot
+    // When Manager Parks Car
+    // Then Parking Ticket is Returned
     @Test
-    public void should_return_parking_ticket_when_parking_lot_service_manager_parks_car_given_parking_lot_service_manager_car_and_parking_lot() {
+    public void should_return_parking_ticket_when_parking_lot_service_manager_parks_car_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         ParkingLot parkingLot = new ParkingLot();
@@ -112,9 +130,12 @@ public class ParkingManagerTest {
         assertNotNull(parkingTicket);
     }
 
-    //Story 6 (AC2) - Test Case 3: Given Parking Lot Service Manager and Parking Lot When Manager Fetches Car Then Car is Returned
+    //Story 6 (AC2) - Test Case 3:
+    // Given Parking Lot Service Manager and Parking Lot
+    // When Manager Fetches Car
+    // Then Car is Returned
     @Test
-    public void should_return_car_when_parking_lot_service_manager_fetch_car_given_parking_lot_service_manager_parking_ticket_and_parking_lot() {
+    public void should_return_car_when_parking_lot_service_manager_fetch_car_given_parking_lot_service_manager() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         ParkingLot parkingLot = new ParkingLot();
@@ -129,9 +150,12 @@ public class ParkingManagerTest {
         assertSame(car, fetchedCar);
     }
 
-    //Story 6 (AC2) - Test Case 3: Given Two Parking Lot Service Managers and Two Parking Lots When Manager Fetches Car from other Lot owned by other manager Then No Car is Returned (UnrecognizedTicketException)
+    //Story 6 (AC2) - Test Case 3:
+    // Given Two Parking Lot Service Managers and Two Parking Lots
+    // When Manager Fetches Car from other Lot owned by other manager
+    // Then No Car is Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_unrecognized_parking_ticket_exception_when_parking_lot_service_manager_fetch_car_given_parking_lot_service_manager_fetch_car_from_another_parking_lot() {
+    public void should_return_no_car_when_parking_lot_service_manager_fetch_car_given_ticket_from_another_parking_lot() {
         //given
         ParkingLotServiceManager parkingLotServiceManager1 = new ParkingLotServiceManager();
         ParkingLotServiceManager parkingLotServiceManager2 = new ParkingLotServiceManager();
@@ -150,9 +174,12 @@ public class ParkingManagerTest {
         });
     }
 
-    //Story 6 (AC3) - Test Case 1: Given Parking Lot Service Manager and Wrong Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
+    //Story 6 (AC3) - Test Case 1:
+    // Given Parking Lot Service Manager and Wrong Ticket
+    // When Manager Assigns Parking Boy to Fetch Car
+    // Then No Car is Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_unrecognized_ticket_exception_when_parking_manager_assigns_parking_boy_fetch_car_given_parking_lot_service_manager_wrong_ticket() {
+    public void should_return_no_car_when_parking_boy_fetch_car_given_parking_lot_service_manager_wrong_ticket() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -172,9 +199,12 @@ public class ParkingManagerTest {
         });
     }
 
-    //Story 6 (AC3) - Test Case 2: Given Parking Lot Service Manager and Used Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (UnrecognizedTicketException)
+    //Story 6 (AC3) - Test Case 2:
+    // Given Parking Lot Service Manager and Used Ticket
+    // When Manager Assigns Parking Boy to Fetch Car
+    // Then No Car is Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_unrecognized_ticket_exception_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_used_ticket() {
+    public void should_return_no_car_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_used_ticket() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -194,9 +224,12 @@ public class ParkingManagerTest {
         });
     }
 
-    //Story 6 (AC3) - Test Case 3: Given Parking Lot Service Manager and No Ticket When Manager Assigns Parking Boy to Fetch Car Then No Car is Returned (TicketNotProvidedException)
+    //Story 6 (AC3) - Test Case 3:
+    // Given Parking Lot Service Manager and No Ticket
+    // When Manager Assigns Parking Boy to Fetch Car
+    // Then No Car is Returned (TicketNotProvidedException)
     @Test
-    public void should_return_ticket_not_provided_exception_when_parking_boy_fetch_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_with_no_ticket() {
+    public void should_return_no_car_when_parking_boy_fetch_car_given_parking_lot_service_manager_no_ticket() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();
@@ -211,9 +244,12 @@ public class ParkingManagerTest {
         });
     }
 
-    //Story 6 (AC3) - Test Case 4: Given Parking Lot Service Manager and Car Parked in Lot with Capacity 1 When Manager Assigns Parking Boy to Fetch Another Car in Full Parking Lot Then No Ticket is Returned (ParkingLotOutOfPositionsException)
+    //Story 6 (AC3) - Test Case 4:
+    // Given Parking Lot Service Manager and Car Parked in Lot with Capacity 1
+    // When Manager Assigns Parking Boy to Fetch Another Car in Full Parking Lot
+    // Then No Ticket is Returned (ParkingLotOutOfPositionsException)
     @Test
-    public void should_return_parking_lot_out_of_positions_exception_when_parking_boy_park_car_given_parking_lot_service_manager_asks_parking_boy_to_park_car_when_parking_lot_is_full() {
+    public void should_not_return_ticket_when_park_car_given_parking_boy_to_park_car_when_parking_lot_is_full() {
         //given
         ParkingLotServiceManager parkingLotServiceManager = new ParkingLotServiceManager();
         List<ParkingLot> parkingLotList = new ArrayList<>();

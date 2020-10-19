@@ -11,7 +11,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
-    //Story 1 - Test Case 1: Given Car When Parking Boy Parks the Car Then Parking Ticket Returned
+    //Story 1 - Test Case 1:
+    // Given Car
+    // When Parking Boy Parks the Car
+    // Then Parking Ticket Returned
     @Test
     public void should_return_ticket_when_park_car_given_car() {
         //given
@@ -28,7 +31,10 @@ public class ParkingBoyTest {
         assertNotNull(parkingTicket);
     }
 
-    //Story 1 - Test Case 2: Given Parking Ticket When Parking Boy Fetches Car Then Car is Returned
+    //Story 1 - Test Case 2:
+    // Given Parking Ticket
+    // When Parking Boy Fetches Car
+    // Then Car is Returned
     @Test
     public void should_return_right_car_when_fetch_car_given_ticket() {
         //given
@@ -46,7 +52,10 @@ public class ParkingBoyTest {
         assertSame(car, fetchedCar);
     }
 
-    //Story 1 - Test Case 3: Given Parking Two Cars When Parking Boy Fetches Cars with Tickets Then Cars are Returned
+    //Story 1 - Test Case 3:
+    // Given Parking Two Cars
+    // When Parking Boy Fetches Cars with Tickets
+    // Then Cars are Returned
     @Test
     public void should_return_two_cars_when_fetch_car_given_two_ticket() {
         //given
@@ -68,7 +77,10 @@ public class ParkingBoyTest {
         assertSame(car2, fetchedCar2);
     }
 
-    //Story 1/2 - Test Case 4: Given Wrong Ticket When Parking Boy Fetches Car Then No Car Returned (UnrecognizedTicketException)
+    //Story 1/2 - Test Case 4:
+    // Given Wrong Ticket
+    // When Parking Boy Fetches Car
+    // Then No Car Returned (UnrecognizedTicketException)
     @Test
     public void should_return_no_car_when_fetch_car_given_wrong_ticket() {
         //given
@@ -90,7 +102,10 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 1/2 - Test Case 5: Given No Ticket When Parking Boy Fetches Car Then No Car Returned (TicketNotProvidedException)
+    //Story 1/2 - Test Case 5:
+    // Given No Ticket
+    // When Parking Boy Fetches Car
+    // Then No Car Returned (TicketNotProvidedException)
     @Test
     public void should_return_no_car_when_fetch_car_given_no_ticket() {
         //given
@@ -105,7 +120,10 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 1/2 - Test Case 6: Given Used Ticket When Parking Boy Fetches Car Then No Car Returned (UnrecognizedTicketException)
+    //Story 1/2 - Test Case 6:
+    // Given Used Ticket
+    // When Parking Boy Fetches Car
+    // Then No Car Returned (UnrecognizedTicketException)
     @Test
     public void should_return_no_car_when_fetch_car_given_used_ticket() {
         //given
@@ -124,7 +142,10 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 1/2 - Test Case 7: Given Used Ticket When Parking Boy Fetches Car Then No Car Returned (ParkingLotOutOfPositionsException)
+    //Story 1/2 - Test Case 7:
+    // Given Used Ticket
+    // When Parking Boy Fetches Car
+    // Then No Car Returned (ParkingLotOutOfPositionsException)
     @Test
     public void should_return_no_ticket_when_fetch_ticket_given_parking_lot_capacity_is_1_and_parked_1_car() {
         //given
@@ -142,7 +163,10 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 1/2 - Test Case 8: Given null Car When Parking Boy Parks Car Then Car is not Parked
+    //Story 1/2 - Test Case 8:
+    // Given null Car
+    // When Parking Boy Parks Car
+    // Then Car is not Parked
     @Test
     public void should_return_car_is_not_parked_when_park_car_given_null_car() {
         //given
@@ -154,7 +178,10 @@ public class ParkingBoyTest {
         assertNull(parkingBoy.park(null));
     }
 
-    //Story 1/2 - Test Case 9: Given parked Car When Parking Boy Parks Car Then Car is not Parked
+    //Story 1/2 - Test Case 9:
+    // Given parked Car
+    // When Parking Boy Parks Car
+    // Then Car is not Parked
     @Test
     public void should_return_car_is_not_parked_when_park_car_given_parked_car() {
         //given
@@ -170,9 +197,12 @@ public class ParkingBoyTest {
         assertNull(wrongParkingTicket);
     }
 
-    //Story 3 - Test Case 1: Given Two Parking Lots When Parking Boy Parks Two Car Then Cars are Parked sequentially
+    //Story 3 - Test Case 1:
+    // Given Two Parking Lots
+    // When Parking Boy Parks Two Car
+    // Then Cars are Parked sequentially
     @Test
-    public void should_return_two_ticket_with_1_car_in_each_parking_lot_when_parking_2_cars_given_two_parking_lot_with_capacity_1() {
+    public void should_return_two_tickets_from_parking_lots_when_parking_2_cars_given_parking_lots_with_capacity_1() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(1);
@@ -192,9 +222,12 @@ public class ParkingBoyTest {
         assertTrue(parkingLotList.get(1).containsTicket(parkingTicket2));
     }
 
-    //Story 3 - Test Case 2: Given Two Parking Lots When Parking Boy Parks Three Cars Then Third Car is not Parked (ParkingLotOutOfPositionsException)
+    //Story 3 - Test Case 2:
+    // Given Two Parking Lots
+    // When Parking Boy Parks Three Cars
+    // Then Third Car is not Parked (ParkingLotOutOfPositionsException)
     @Test
-    public void should_return_parking_lots_out_of_position_exception_when_park_car_given_two_parking_lot_with_capacity_1_and_three_cars() {
+    public void should_not_return_third_ticket_when_park_car_given_two_parking_lot_capacity_1_each_and_three_cars() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot(1);
@@ -214,9 +247,12 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 3 - Test Case 3: Given Two Parking Lots and Two Used Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    //Story 3 - Test Case 3:
+    // Given Two Parking Lots and Two Used Tickets
+    // When Parking Boy Fetches Two Car
+    // Then No Cars are Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_unrecognized_ticket_exception_when_fetch_car_given_used_tickets() {
+    public void should_not_return_cars_when_fetch_car_given_used_tickets() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot();
@@ -240,9 +276,12 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 3 - Test Case 4: Given Two Parking Lots and Two Wrong Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    //Story 3 - Test Case 4:
+    // Given Two Parking Lots and Two Wrong Tickets
+    // When Parking Boy Fetches Two Car
+    // Then No Cars are Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_unrecognized_ticket_exception_when_fetch_car_given_wrong_tickets() {
+    public void should_not_return_cars_when_fetch_car_given_wrong_tickets() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot();
@@ -266,9 +305,12 @@ public class ParkingBoyTest {
         });
     }
 
-    //Story 3 - Test Case 5: Given Two Parking Lots and No Tickets When Parking Boy Fetches Two Car Then No Cars are Returned (UnrecognizedTicketException)
+    //Story 3 - Test Case 5:
+    // Given Two Parking Lots and No Tickets
+    // When Parking Boy Fetches Two Car
+    // Then No Cars are Returned (UnrecognizedTicketException)
     @Test
-    public void should_return_ticket_not_provided_exception_when_fetch_car_given_no_tickets() {
+    public void should_not_return_car_when_fetch_car_given_no_tickets() {
         //given
         List<ParkingLot> parkingLotList = new ArrayList<>();
         ParkingLot parkingLot1 = new ParkingLot();
