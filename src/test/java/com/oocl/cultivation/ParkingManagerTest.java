@@ -146,7 +146,7 @@ public class ParkingManagerTest {
         //when
         Car fetchedCar = parkingManager.fetchCar(parkingTicket);
 
-        // then
+        //then
         assertSame(car, fetchedCar);
     }
 

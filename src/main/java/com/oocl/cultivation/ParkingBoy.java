@@ -30,7 +30,7 @@ public class ParkingBoy {
         } else if (parkingTicket!=null && parkingLotWithTicket == null) {
             throw new UnrecognizedTicketException();
         }
-        return parkingLotWithTicket.fetchCar(parkingTicket) ;
+        return parkingLotWithTicket.fetchCar(parkingTicket);
     }
 
     public void addParkingLotToList(ParkingLot parkingLot){
