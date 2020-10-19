@@ -1,5 +1,7 @@
 package com.oocl.cultivation;
 
+import com.oocl.exceptions.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +44,27 @@ public class ParkingManager {
 
     public ParkingTicket park(Car car) {
         ParkingLot parkingLotWithPosition = parkingLotsList.stream().filter(parkingLot -> !parkingLot.isFull()).findFirst().orElse(null);
-        return parkingLotWithPosition == null ? parkingLotsList.get(0).park(car) : parkingLotWithPosition.park(car);
+        if (car==null){
+            throw new CarIsNullException();
+        } else if(isCarParkedInAnyParkingLots(car)){
+            throw new CarIsAlreadyParkedException();
+        } else if (parkingLotWithPosition==null) {
+            throw new ParkingLotOutOfPositionsException();
+        }
+        return parkingLotWithPosition.park(car);
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
         ParkingLot parkingLotWithTicket = parkingLotsList.stream().filter(parkingLot -> parkingLot.containsTicket(parkingTicket)).findFirst().orElse(null);
-        return parkingLotWithTicket == null ? parkingLotsList.get(0).fetchCar(parkingTicket) : parkingLotWithTicket.fetchCar(parkingTicket) ;
+        if(parkingTicket==null){
+            throw new TicketNotProvidedException();
+        } else if (parkingTicket!=null && parkingLotWithTicket == null) {
+            throw new UnrecognizedTicketException();
+        }
+        return parkingLotWithTicket.fetchCar(parkingTicket);
+    }
+
+    public boolean isCarParkedInAnyParkingLots(Car car){
+        return parkingLotsList.stream().anyMatch(parkingLot -> parkingLot.containsCar(car));
     }
 }
